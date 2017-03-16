@@ -86,6 +86,16 @@ class LinkedList:
                 current = None               # And remove the current element
         return removed
 
+    # Reversing a Linked List without creating a new list
+    def reverse_list(self):
+        current = self.head                 # Intialize current as the head
+
+        while current is not None:          # Traverse till the end of the list
+            temp = current.next             # Let temp be the next element to current
+            temp.next = current             # reverse the pointers, making current as next of temp
+            current = current.next          # increase current pointer to next element
+        self.head = current                 # In the end make current (last element in original list) as the new head
+
     # Returns the current size of the list
     def size(self):
         current = self.head
@@ -135,4 +145,6 @@ if __name__ == "__main__":
     l.print_list()
     print("Size: ", l.size(), '\n')
 
-    print("Element found at: ", l.search(11))
+
+    l.reverse_list()
+    l.print_list()
